@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    {% if 'username' in session %}
+
+    <nav>
+        <div>
+            <p>
+                Logged In As: {{session.username}}
+            </p>
+        </div>
+        <div>
+            <a href="/logout">
+                Logout
+            </a>
+        </div>
+        <div>
+            <a href="/users/{{session.username}}">
+                User Information
+            </a>
+        </div>
+    </nav>
+    {% endif %}
+    
+    {% if 'username' not in session %}
+    <nav>
+        <div>
+            <a href="/register">
+                Sign Up
+            </a>
+        </div>
+        <div>
+            <a href="/login">
+                Login
+            </a>
+        </div>
+    </nav>
+    {% endif%}
+
+    {%block content %}
+    
+{% endblock%}
+</body>
+</html>
